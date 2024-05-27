@@ -20,7 +20,7 @@ async function fastifyCloudFlareTurnstile (fastify, options) {
   fastify.decorate('cfTurnstile', cfTurnstile)
 
   async function cfTurnstile (req) {
-    const token = req.body['cf-turnstile-response']?.value || req.body['cf-turnstile-response']
+    const token = req.body?.['cf-turnstile-response']?.value || req.body?.['cf-turnstile-response']
     await verify(req, token, options.privatekey)
   }
 }
